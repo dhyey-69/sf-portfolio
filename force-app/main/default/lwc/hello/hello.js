@@ -7,6 +7,251 @@ export default class Hello extends LightningElement {
     @track isDarkTheme = true;
     profileImage = profileImageFile;
 
+    educationData = [
+        {
+            id: 1,
+            degree: 'B.Tech – Computer Science and Engineering',
+            institution: 'GSFC University',
+            dateRange: 'July 2021 – June 2025',
+            location: 'Vadodara, Gujarat, India'
+        },
+        {
+            id: 2,
+            degree: 'Senior Secondary (PCM with Computer) – 69.3%',
+            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Secondary and Higher Secondary Day School Nadiad',
+            dateRange: 'June 2020 – July 2021',
+            location: 'Nadiad, Gujarat, India'
+        },
+        {
+            id: 3,
+            degree: 'Secondary – 74.8%',
+            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Secondary and Higher Secondary Day School Nadiad',
+            dateRange: 'June 2018 – May 2019',
+            location: 'Nadiad, Gujarat, India'
+        }
+    ];
+
+    certificationsData = [
+        {
+            id: 1,
+            title: 'Google Data Analytics',
+            provider: 'Google',
+            date: 'June 2024',
+            certificateUrl: '#' // Replace with actual certificate URL
+        },
+        {
+            id: 2,
+            title: 'IBM Back-End Development',
+            provider: 'IBM',
+            date: 'July 2024',
+            certificateUrl: 'https://orgfarm-b4985a3d23-dev-ed.develop.my.site.com/s/' // Replace with actual certificate URL
+        },
+        {
+            id: 3,
+            title: 'TensorFlow Developer',
+            provider: 'DeepLearning.AI',
+            date: '2024',
+            certificateUrl: '#' // Replace with actual certificate URL
+        }
+    ];
+
+    skillsData = [
+        {
+            id: 1,
+            name: 'Python',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+        },
+        {
+            id: 2,
+            name: 'Java',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
+        },
+        {
+            id: 3,
+            name: 'JavaScript',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+        },
+        {
+            id: 4,
+            name: 'Apex',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 5,
+            name: 'LWC',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 6,
+            name: 'Salesforce Admin',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 7,
+            name: 'Salesforce Development',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 8,
+            name: 'HTML',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
+        },
+        {
+            id: 9,
+            name: 'CSS',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+        },
+        {
+            id: 10,
+            name: 'Agentforce',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 11,
+            name: 'Einstein AI',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
+        },
+        {
+            id: 12,
+            name: 'Google Cloud',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg'
+        },
+        {
+            id: 13,
+            name: 'Google AI',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
+        },
+        {
+            id: 14,
+            name: 'AI',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg'
+        },
+        {
+            id: 15,
+            name: 'ML',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+        },
+        {
+            id: 16,
+            name: 'Deep Learning',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg'
+        },
+        {
+            id: 17,
+            name: 'LLMs',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+        },
+        {
+            id: 18,
+            name: 'RAG',
+            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+        }
+    ];
+
+    // Handle skill card click (optional)
+    handleSkillClick(event) {
+        const skillName = event.currentTarget.querySelector('.skill-name').textContent;
+        console.log('Clicked skill:', skillName);
+        // You can add any click functionality here
+    }
+
+    
+    projectsData = [
+        {
+            id: 1,
+            title: 'Explainable AI-Based Glaucoma Detection',
+            description: 'Built a multi-modal diagnostic AI system using CNNs, LIME, and LLMs. Created a full-stack app using React.js and FastAPI for real-time screening. Integrated MongoDB and AI explainability via heatmaps and natural language outputs.',
+            techStack: ['React.js', 'FastAPI', 'CNNs', 'LIME', 'LLMs', 'MongoDB', 'Python', 'TensorFlow'],
+            projectUrl: '#' // Replace with actual project URL
+        },
+        {
+            id: 2,
+            title: 'E-Commerce Customer Segmentation & Insights',
+            description: 'Performed customer segmentation using RFM scoring and K-Means clustering in Python. Enhanced marketing efficiency by 20% through targeted strategies. Built dashboards and visualizations in Tableau for business reporting.',
+            techStack: ['Python', 'K-Means', 'RFM Scoring', 'Tableau', 'Pandas', 'Scikit-learn', 'Data Analysis'],
+            projectUrl: '#' // Replace with actual project URL
+        },
+        {
+            id: 3,
+            title: 'AI-Powered Chatbot with RAG Implementation',
+            description: 'Developed an intelligent chatbot using Large Language Models and Retrieval-Augmented Generation. Integrated vector databases for context-aware responses and implemented real-time learning capabilities.',
+            techStack: ['LLMs', 'RAG', 'Vector DB', 'Python', 'FastAPI', 'Transformers', 'LangChain'],
+            projectUrl: '#' // Replace with actual project URL
+        },
+        {
+            id: 4,
+            title: 'Deep Learning Stock Price Prediction',
+            description: 'Built a sophisticated stock price prediction model using LSTM neural networks and technical indicators. Achieved 85% accuracy in short-term price movements with real-time data integration and visualization dashboard.',
+            techStack: ['Deep Learning', 'LSTM', 'TensorFlow', 'Python', 'Pandas', 'NumPy', 'Plotly'],
+            projectUrl: '#' // Replace with actual project URL
+        }
+    ];
+
+    languagesData = [
+        { id: 1, name: 'English' },
+        { id: 2, name: 'Hindi' },
+        { id: 3, name: 'Gujarati' }
+    ];
+
+    // Lifecycle hooks
+    connectedCallback() {
+        console.log('Projects section loaded with', this.projectsData.length, 'projects');
+    }
+
+    // Handle project view button click
+    handleProjectClick(event) {
+        const projectUrl = event.target.closest('a').href;
+        if (projectUrl === window.location.origin + '/#') {
+            event.preventDefault();
+            console.log('Project URL not available');
+            // You can show a toast message here
+        }
+    }
+
+    // Handle language tag click
+    handleLanguageClick(event) {
+        const language = event.target.textContent;
+        console.log('Selected language:', language);
+        // You can implement language switching logic here
+    }
+
+    // Handle certificate link clicks
+    handleCertificateClick(event) {
+        const url = event.target.closest('a').href;
+        if (url === '#') {
+            event.preventDefault();
+            // You can show a modal or toast message here
+            console.log('Certificate URL not available');
+        }
+    }
+
+    experiences = [
+        {
+            id: 1,
+            title: 'Salesforce Developer',
+            company: 'UCI-India',
+            dateRange: 'Jan 2025 – Present',
+            location: 'Vadodara, Gujarat',
+            achievements: [
+                'Created Mentor Mentee web platform using React.js and FastAPI, reducing server response time by 25%',
+                'Developed AI-based matching system using Python and scikit-learn, achieving 90% accuracy',
+                'Designed role-specific dashboards and managed data with PostgreSQL and MongoDB'
+            ]
+        },
+        {
+            id: 2,
+            title: 'Python Developer Intern',
+            company: 'Webmyne Systems',
+            dateRange: 'June – July 2024',
+            location: 'Vadodara, Gujarat',
+            achievements: [
+                'Developed SQL-based database solutions for Data Center Management Systems',
+                'Automated data collection and cleaning workflows using Python',
+                'Tuned queries to improve data retrieval speed by 30%'
+            ]
+        }
+    ];
+
 
     handleLinkClick(event) {
         event.preventDefault();

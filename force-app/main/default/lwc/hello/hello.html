@@ -108,25 +108,212 @@
                 </div>
             </section>
 
-            <!-- PLACEHOLDER SECTIONS -->
-            <section class="section" id="skills">
+            <section class="section skills-section" id="skills">
                 <div class="container">
-                    <h2 class="section__title">Skills</h2>
-                    <p class="section__placeholder">Skills section coming soon...</p>
+                    <h2 class="section__title">Technical Skills</h2>
+                    <p class="section__subtitle">Technologies and tools I work with to build innovative solutions</p>
+                    
+                    <div class="skills-grid">
+                        <template for:each={skillsData} for:item="skill">
+                            <div key={skill.id} class="skill-card">
+                                <div class="skill-icon">
+                                    <img src={skill.iconUrl} alt={skill.name} class="skill-image">
+                                </div>
+                                <h4 class="skill-name">{skill.name}</h4>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </section>
 
-            <section class="section" id="experience">
+            <!-- Experience Section HTML for LWC -->
+            <section class="section experience-section" id="experience">
                 <div class="container">
                     <h2 class="section__title">Experience</h2>
-                    <p class="section__placeholder">Experience section coming soon...</p>
+                    <p class="section__subtitle">My professional journey in software development and database engineering</p>
+                    
+                    <div class="experience-timeline">
+                        <!-- Experience Item 1 -->
+                        <div class="experience-item">
+                            <div class="experience-dot"></div>
+                            <div class="experience-content">
+                                <div class="experience-header">
+                                    <div class="experience-left">
+                                        <h3 class="experience-title">Salesforce Developer</h3>
+                                        <div class="experience-company">
+                                            <span class="company-icon"></span>
+                                            <span class="company-name">UCI-India</span>
+                                        </div>
+                                    </div>
+                                    <div class="experience-right">
+                                        <div class="experience-date">
+                                            <span class="date-icon"></span>
+                                            <span class="date-text">Jan 2025 - Present</span>
+                                        </div>
+                                        <div class="experience-location">
+                                            <span class="location-icon"></span>
+                                            <span class="location-text">Vadodara, Gujarat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <ul class="experience-list">
+                                        <li>Created Mentor Mentee web platform using React.js and FastAPI, reducing server response time by 25%</li>
+                                        <li>Developed AI-based matching system using Python and scikit-learn, achieving 90% accuracy</li>
+                                        <li>Designed role-specific dashboards and managed data with PostgreSQL and MongoDB</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Experience Item 2 -->
+                        <div class="experience-item">
+                            <div class="experience-dot"></div>
+                            <div class="experience-content">
+                                <div class="experience-header">
+                                    <div class="experience-left">
+                                        <h3 class="experience-title">Python Developer Intern</h3>
+                                        <div class="experience-company">
+                                            <span class="company-icon"></span>
+                                            <span class="company-name">Webmyne Systems</span>
+                                        </div>
+                                    </div>
+                                    <div class="experience-right">
+                                        <div class="experience-date">
+                                            <span class="date-icon"></span>
+                                            <span class="date-text">Dec 2024 – Jan 2025</span>
+                                        </div>
+                                        <div class="experience-location">
+                                            <span class="location-icon"></span>
+                                            <span class="location-text">Vadodara, Gujarat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <ul class="experience-list">
+                                        <li>Developed SQL-based database solutions for Data Center Management Systems</li>
+                                        <li>Automated data collection and cleaning workflows using Python</li>
+                                        <li>Tuned queries to improve data retrieval speed by 30%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="section" id="projects">
+            <section class="section education-section" id="education">
+                <div class="container">
+                    <h2 class="section__title">Education & Certifications</h2>
+                    <p class="section__subtitle">My academic background and professional certifications</p>
+                    
+                    <!-- Education Section -->
+                    <div class="education-content">
+                        <h3 class="subsection-title">Education</h3>
+                        <div class="education-list">
+                            <template for:each={educationData} for:item="edu">
+                                <div key={edu.id} class="education-card">
+                                    <div class="education-icon">
+                                        <span class="graduation-cap-icon"></span>
+                                    </div>
+                                    <div class="education-details">
+                                        <div class="education-left">
+                                            <h4 class="education-degree">{edu.degree}</h4>
+                                            <p class="education-institution">{edu.institution}</p>
+                                        </div>
+                                        <div class="education-right">
+                                            <div class="education-date">
+                                                <span class="date-icon"></span>
+                                                <span class="date-text">{edu.dateRange}</span>
+                                            </div>
+                                            <div class="education-location">
+                                                <span class="location-icon"></span>
+                                                <span class="location-text">{edu.location}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+        
+                    <!-- Certifications Section -->
+                    <div class="certifications-content">
+                        <h3 class="subsection-title">Certifications</h3>
+                        <div class="certifications-grid">
+                            <template for:each={certificationsData} for:item="cert">
+                                <div key={cert.id} class="certification-card">
+                                    <div class="certification-header">
+                                        <h4 class="certification-title">{cert.title}</h4>
+                                        <p class="certification-provider">{cert.provider}</p>
+                                    </div>
+                                    <div class="certification-footer">
+                                        <div class="certification-date">
+                                            <span class="date-icon"></span>
+                                            <span class="date-text">{cert.date}</span>
+                                        </div>
+                                        <div if={cert.certificateUrl}>
+                                            <a href={cert.certificateUrl} target="_blank" class="view-certificate-btn">
+                                                View Certificate
+                                                <span class="external-link-icon"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section projects-section" id="projects">
                 <div class="container">
                     <h2 class="section__title">Projects</h2>
-                    <p class="section__placeholder">Projects section coming soon...</p>
+                    <p class="section__subtitle">Showcasing my key projects in AI/ML, web development, and data analysis</p>
+                    
+                    <div class="projects-grid">
+                        <template for:each={projectsData} for:item="project">
+                            <div key={project.id} class="project-card">
+                                <!-- GitHub Icon -->
+                                <div class="project-github">
+                                    <span class="github-icon"></span>
+                                </div>
+                                
+                                <!-- Project Content -->
+                                <div class="project-content">
+                                    <h3 class="project-title">{project.title}</h3>
+                                    <p class="project-description">{project.description}</p>
+                                    
+                                    <!-- Tech Stack Tags -->
+                                    <div class="project-tech-stack">
+                                        <template for:each={project.techStack} for:item="tech">
+                                            <span key={tech} class="tech-tag">{tech}</span>
+                                        </template>
+                                    </div>
+                                    
+                                    <!-- View Project Button -->
+                                    <div class="project-actions">
+                                        <a href={project.projectUrl} target="_blank" class="view-project-btn">
+                                            <span class="project-icon"></span>
+                                            View Project
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Languages Section -->
+            <section class="section languages-section" id="languages">
+                <div class="container">
+                    <h2 class="section__title languages-title">Languages</h2>
+                    <div class="languages-grid">
+                        <template for:each={languagesData} for:item="language">
+                            <span key={language.id} class="language-tag">{language.name}</span>
+                        </template>
+                    </div>
                 </div>
             </section>
 
