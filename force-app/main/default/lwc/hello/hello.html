@@ -17,9 +17,6 @@
                             <a href="#projects" class="nav__link" onclick={handleLinkClick}>Projects</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#doodles" class="nav__link" onclick={handleLinkClick}>Doodles</a>
-                        </li>
-                        <li class="nav__item">
                             <a href="#resume" class="nav__link" onclick={handleLinkClick}>
                                 Resume
                                 <i class="nav__external-icon"></i>
@@ -57,9 +54,10 @@
                             <h1 class="home__title">
                                 Hi <span class="wave-emoji">👋</span>, I'm <span class="highlight">Dhyey Bhatt</span>
                             </h1>
-                            <p class="home__subtitle">Salesforce Developer Intern with experience in full-stack development</p>
-                            <p class="home__description">Skilled in Python, React.js, Machine Learning, and Database Engineering</p>
-                            <p class="home__passion">Passionate about AI/ML and building innovative solutions</p>
+                            <p class="home__subtitle">Salesforce Developer with expertise in AI and Full Stack Development</p>
+                            <p class="home__description">Skilled in Python, Java, Machine Learning, Salesforce, and Google Cloud Platform</p>
+                            <p class="home__passion">Currently working with the AI Team at UCI - India, focusing on Apex, LWC, and AI solutions like AgentForce and Einstein AI</p>
+
                             
                             <div class="home__info">
                                 <div class="home__info-item">
@@ -132,13 +130,6 @@
                 </div>
             </section>
 
-            <section class="section" id="doodles">
-                <div class="container">
-                    <h2 class="section__title">Doodles</h2>
-                    <p class="section__placeholder">Doodles section coming soon...</p>
-                </div>
-            </section>
-
             <!-- === CONTACT SECTION (REPLACED) === -->
             <section class="section contact-section" id="contact">
                 <div class="container contact-wrapper">
@@ -179,15 +170,15 @@
 
                         <form class="contact-form" onsubmit={handleContactFormSubmit} novalidate>
                             <label for="cf-name" class="sr-only">Name *</label>
-                            <input id="cf-name" name="name" type="text" class="contact-input" placeholder="Your full name" required />
+                            <input data-id="cf-name" name="name" type="text" class="contact-input" placeholder="Your full name" required />
 
                             <label for="cf-email" class="sr-only">Email *</label>
-                            <input id="cf-email" name="email" type="email" class="contact-input" placeholder="your.email@example.com" required />
+                            <input data-id="cf-email" name="email" type="email" class="contact-input" placeholder="your.email@example.com" required />
 
                             <label for="cf-message" class="sr-only">Message *</label>
-                            <textarea id="cf-message" name="message" rows="6" class="contact-textarea" placeholder="Tell me about your project, ideas, or just say hello!" required></textarea>
+                            <textarea data-id="cf-message" name="message" rows="6" class="contact-textarea" placeholder="Tell me about your project, ideas, or just say hello!" required></textarea>
 
-                            <button type="submit" class="button button--primary contact-submit">
+                            <button type="submit" class="button button--primary contact-submit" onclick={handleContactFormSubmit}>
                                 <i class="button__icon send-icon"></i>
                                 Send Message
                             </button>

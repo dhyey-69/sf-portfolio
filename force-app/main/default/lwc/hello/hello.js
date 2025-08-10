@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import profileImageFile from '@salesforce/resourceUrl/myProfilePic';
+import sendContactFormEmail from '@salesforce/apex/ContactFormController.sendContactFormEmail';
 
 
 export default class Hello extends LightningElement {
@@ -328,34 +329,39 @@ export default class Hello extends LightningElement {
         });
     }
 
-    /* -------------------------
-       Contact form submit
-       ------------------------- */
     handleContactFormSubmit(event) {
-        event.preventDefault();
-
-        // Collect data (you will wire backend in Apex later)
-        const form = event.target;
-        const fd = new FormData(form);
-        const payload = {
-            name: fd.get('name'),
-            email: fd.get('email'),
-            message: fd.get('message')
-        };
-
-        // For now: basic validation + UX
-        if (!payload.name || !payload.email || !payload.message) {
+        event.preventDefault();    
+        const nameEl = this.template.querySelector('[data-id="cf-name"]');
+        const emailEl = this.template.querySelector('[data-id="cf-email"]');
+        const messageEl = this.template.querySelector('[data-id="cf-message"]');
+        
+        const name = nameEl?.value.trim();
+        const email = emailEl?.value.trim();
+        const message = messageEl?.value.trim();
+        
+        if (!name || !email || !message) {
+            console.warn('⚠️ Validation failed — missing fields');
             this.showNotification('Please fill all required fields', 'error');
             return;
         }
-
-        // TODO: send payload to Apex / Salesforce when ready.
-        console.log('Contact form payload:', payload);
-
-        // UX feedback
-        this.showNotification('Message sent — backend coming soon', 'success');
-
-        // reset form
-        form.reset();
+    
+        sendContactFormEmail({ name, email, message })
+            .then(result => {
+                if (result === 'SUCCESS') {
+                    this.showNotification('Message sent — check your email!', 'success');
+                    this.template.querySelector('form').reset();
+                } else {
+                    this.showNotification('Error: ' + result, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('💥 Apex error:', error);
+                this.showNotification('Something went wrong', 'error');
+            });
+    }    
+    
+    showNotification(message, variant) {
+        alert(message);
     }
+    
 }
