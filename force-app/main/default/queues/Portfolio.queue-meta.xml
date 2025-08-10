@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Portfolio</name>
+    <queueMembers>
+        <users>
+            <user>dhyeybhatt66758@agentforce.com</user>
+            <user>dhyey_portfolio_agent@00dgk000008ltep.ext</user>
+            <user>epic.d3c1cec1e7b4@orgfarm.salesforce.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Portfolio</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>
