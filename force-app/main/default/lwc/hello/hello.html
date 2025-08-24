@@ -1,45 +1,47 @@
 <template>
     <div class="main-container">
         <header class="header">
-            <nav class="nav container">
-                <a href="#home" class="nav__logo" onclick={handleScrollToTop}>
-                    <i class="nav__logo-icon"></i>
-                </a>
-                <div class="nav__menu">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link" onclick={handleLinkClick}>Skills</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#experience" class="nav__link" onclick={handleLinkClick}>Experience</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#projects" class="nav__link" onclick={handleLinkClick}>Projects</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#resume" class="nav__link" onclick={handleLinkClick}>
-                                Resume
-                                <i class="nav__external-icon"></i>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link" onclick={handleLinkClick}>Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav__actions">
-                    <button class="theme-toggle" onclick={handleThemeToggle} title="Toggle theme">
-                        <i class="theme-toggle__icon"></i>
-                    </button>
-                    <a href="https://github.com/dhyey-69" target="_blank" class="nav__social-link" title="GitHub">
-                        <i class="social-icon github-icon"></i>
+            <nav class="nav">
+                <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%;">
+                    <a href="#home" class="nav__logo" onclick={handleScrollToTop}>
+                        <i class="nav__logo-icon"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/dhyey-6930-bhatt/" target="_blank" class="nav__social-link" title="LinkedIn">
-                        <i class="social-icon linkedin-icon"></i>
-                    </a>
-                    <a href="mailto:dhyeybhatt66@gmail.com" class="nav__social-link" title="Email">
-                        <i class="social-icon email-icon"></i>
-                    </a>
+                    <div class="nav__menu">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="#skills" class="nav__link" onclick={handleLinkClick}>Skills</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#experience" class="nav__link" onclick={handleLinkClick}>Experience</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#projects" class="nav__link" onclick={handleLinkClick}>Projects</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#resume" class="nav__link" onclick={handleLinkClick}>
+                                    Resume
+                                    <i class="nav__external-icon"></i>
+                                </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#contact" class="nav__link" onclick={handleLinkClick}>Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav__actions">
+                        <button class="theme-toggle" onclick={handleThemeToggle} title="Toggle theme">
+                            <i class="theme-toggle__icon"></i>
+                        </button>
+                        <a href="https://github.com/dhyey-69" target="_blank" class="nav__social-link" title="GitHub">
+                            <i class="social-icon github-icon"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dhyey-6930-bhatt/" target="_blank" class="nav__social-link" title="LinkedIn">
+                            <i class="social-icon linkedin-icon"></i>
+                        </a>
+                        <a href="mailto:dhyeybhatt66@gmail.com" class="nav__social-link" title="Email">
+                            <i class="social-icon email-icon"></i>
+                        </a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -62,11 +64,11 @@
                             <div class="home__info">
                                 <div class="home__info-item">
                                     <i class="info-icon location-icon"></i>
-                                    <span>Nadiad, Gujarat</span>
+                                    <span>Nadiad, Gujarat, India</span>
                                 </div>
                                 <div class="home__info-item">
                                     <i class="info-icon phone-icon"></i>
-                                    <span>+91 1234567890</span>
+                                    <span>+91 7016421160</span>
                                 </div>
                                 <div class="home__info-item">
                                     <i class="info-icon email-icon"></i>
@@ -90,12 +92,13 @@
                                     <i class="button__icon download-icon"></i>
                                     Download Resume
                                 </button>
-                                <button class="button button--secondary" onclick={handleGetInTouch}>
+                                <!-- CHANGED: These are now <a> tags using the working handleLinkClick -->
+                                <a href="#contact" class="button button--secondary" onclick={handleLinkClick}>
                                     Get In Touch
-                                </button>
-                                <button class="button button--secondary" onclick={handleViewProjects}>
+                                </a>
+                                <a href="#projects" class="button button--secondary" onclick={handleLinkClick}>
                                     View Projects
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -114,14 +117,14 @@
                     <p class="section__subtitle">Technologies and tools I work with to build innovative solutions</p>
                     
                     <div class="skills-grid">
-                        <template for:each={skillsData} for:item="skill">
+                        <template for:each={skills} for:item="skill">
                             <div key={skill.id} class="skill-card">
                                 <div class="skill-icon">
                                     <img src={skill.iconUrl} alt={skill.name} class="skill-image">
                                 </div>
                                 <h4 class="skill-name">{skill.name}</h4>
                             </div>
-                        </template>
+                        </template>                        
                     </div>
                 </div>
             </section>
@@ -133,71 +136,41 @@
                     <p class="section__subtitle">My professional journey in software development and database engineering</p>
                     
                     <div class="experience-timeline">
-                        <!-- Experience Item 1 -->
-                        <div class="experience-item">
-                            <div class="experience-dot"></div>
-                            <div class="experience-content">
-                                <div class="experience-header">
-                                    <div class="experience-left">
-                                        <h3 class="experience-title">Salesforce Developer</h3>
-                                        <div class="experience-company">
-                                            <span class="company-icon"></span>
-                                            <span class="company-name">UCI-India</span>
+                        <!-- The entire list of experiences will be generated here -->
+                        <template for:each={experiences} for:item="exp">
+                            <div key={exp.id} class="experience-item">
+                                <div class="experience-dot"></div>
+                                <div class="experience-content">
+                                    <div class="experience-header">
+                                        <div class="experience-left">
+                                            <h3 class="experience-title">{exp.title}</h3>
+                                            <div class="experience-company">
+                                                <span class="company-icon"></span>
+                                                <span class="company-name">{exp.company}</span>
+                                            </div>
+                                        </div>
+                                        <div class="experience-right">
+                                            <div class="experience-date">
+                                                <span class="date-icon"></span>
+                                                <span class="date-text">{exp.dateRange}</span>
+                                            </div>
+                                            <div class="experience-location">
+                                                <span class="location-icon"></span>
+                                                <span class="location-text">{exp.location}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="experience-right">
-                                        <div class="experience-date">
-                                            <span class="date-icon"></span>
-                                            <span class="date-text">Jan 2025 - Present</span>
-                                        </div>
-                                        <div class="experience-location">
-                                            <span class="location-icon"></span>
-                                            <span class="location-text">Vadodara, Gujarat</span>
-                                        </div>
+                                    <div class="experience-description">
+                                        <ul class="experience-list">
+                                            <!-- Loop through the achievements for each experience -->
+                                            <template for:each={exp.achievements} for:item="achievement">
+                                                <li key={achievement}>{achievement}</li>
+                                            </template>
+                                        </ul>
                                     </div>
-                                </div>
-                                <div class="experience-description">
-                                    <ul class="experience-list">
-                                        <li>Created Mentor Mentee web platform using React.js and FastAPI, reducing server response time by 25%</li>
-                                        <li>Developed AI-based matching system using Python and scikit-learn, achieving 90% accuracy</li>
-                                        <li>Designed role-specific dashboards and managed data with PostgreSQL and MongoDB</li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Experience Item 2 -->
-                        <div class="experience-item">
-                            <div class="experience-dot"></div>
-                            <div class="experience-content">
-                                <div class="experience-header">
-                                    <div class="experience-left">
-                                        <h3 class="experience-title">Python Developer Intern</h3>
-                                        <div class="experience-company">
-                                            <span class="company-icon"></span>
-                                            <span class="company-name">Webmyne Systems</span>
-                                        </div>
-                                    </div>
-                                    <div class="experience-right">
-                                        <div class="experience-date">
-                                            <span class="date-icon"></span>
-                                            <span class="date-text">Dec 2024 – Jan 2025</span>
-                                        </div>
-                                        <div class="experience-location">
-                                            <span class="location-icon"></span>
-                                            <span class="location-text">Vadodara, Gujarat</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="experience-description">
-                                    <ul class="experience-list">
-                                        <li>Developed SQL-based database solutions for Data Center Management Systems</li>
-                                        <li>Automated data collection and cleaning workflows using Python</li>
-                                        <li>Tuned queries to improve data retrieval speed by 30%</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </section>
@@ -339,7 +312,7 @@
                             <div class="contact-card" role="listitem">
                                 <i class="info-icon phone-icon contact-card-icon"></i>
                                 <h4 class="contact-card-title">Phone</h4>
-                                <p class="contact-card-text">+91 1234567890</p>
+                                <p class="contact-card-text">+91 7016421160</p>
                             </div>
 
                             <div class="contact-card" role="listitem">
@@ -393,8 +366,6 @@
 
                 </div>
             </section>
-            <!-- === END CONTACT SECTION === -->
-
         </main>
 
         <!-- Footer -->
@@ -413,8 +384,8 @@
                 <div class="footer-col footer-contact">
                     <h4>Contact</h4>
                     <p class="footer-contact-line"><i class="info-icon email-icon"></i> dhyeybhatt66@gmail.com</p>
-                    <p class="footer-contact-line"><i class="info-icon phone-icon"></i> +91 1234567890</p>
-                    <p class="footer-contact-line"><i class="info-icon location-icon"></i> Nadiad, Gujarat</p>
+                    <p class="footer-contact-line"><i class="info-icon phone-icon"></i> +91 7016421160</p>
+                    <p class="footer-contact-line"><i class="info-icon location-icon"></i> Nadiad, Gujarat, India</p>
                 </div>
 
                 <div class="footer-col footer-links">

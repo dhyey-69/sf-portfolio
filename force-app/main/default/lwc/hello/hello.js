@@ -1,32 +1,41 @@
 import { LightningElement, track } from 'lwc';
 import profileImageFile from '@salesforce/resourceUrl/myProfilePic';
+import skillIcons from '@salesforce/resourceUrl/skillicons';
 import sendContactFormEmail from '@salesforce/apex/ContactFormController.sendContactFormEmail';
 
 
 export default class Hello extends LightningElement {
     @track isDarkTheme = true;
     profileImage = profileImageFile;
+    // apex = apexLogo;
 
     educationData = [
         {
             id: 1,
-            degree: 'B.Tech – Computer Science and Engineering',
+            degree: 'B.Tech Computer Science Engineering',
             institution: 'GSFC University',
             dateRange: 'July 2021 – June 2025',
             location: 'Vadodara, Gujarat, India'
         },
         {
             id: 2,
-            degree: 'Senior Secondary (PCM with Computer) – 69.3%',
-            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Secondary and Higher Secondary Day School Nadiad',
-            dateRange: 'June 2020 – July 2021',
+            degree: 'Higher Secondary Education (HSC)',
+            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Day School',
+            dateRange: 'June 2019 – July 2021',
             location: 'Nadiad, Gujarat, India'
         },
         {
             id: 3,
-            degree: 'Secondary – 74.8%',
-            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Secondary and Higher Secondary Day School Nadiad',
-            dateRange: 'June 2018 – May 2019',
+            degree: 'Secondary School Education (SSC)',
+            institution: 'Sharda Mandir Anitaben Devangbhai Patel (Ipcowala) Day School',
+            dateRange: 'June 2017 – May 2019',
+            location: 'Nadiad, Gujarat, India'
+        },
+        {
+            id: 4,
+            degree: 'Primary and Elementary Education',
+            institution: 'Shree Swami Vivekanand Vidhya Vihar School',
+            dateRange: 'June 2007 – May 2017',
             location: 'Nadiad, Gujarat, India'
         }
     ];
@@ -34,119 +43,48 @@ export default class Hello extends LightningElement {
     certificationsData = [
         {
             id: 1,
-            title: 'Google Data Analytics',
-            provider: 'Google',
-            date: 'June 2024',
-            certificateUrl: '#' // Replace with actual certificate URL
+            title: 'Google Cloud Computing Foundations',
+            provider: 'NPTEL(IIT - Kharagpur)',
+            date: 'October 2023',
+            certificateUrl: 'https://archive.nptel.ac.in/content/noc/NOC23/SEM2/Ecertificates/106/noc23-cs90/Course/NPTEL23CS90S73110002820030695.pdf'
         },
         {
             id: 2,
-            title: 'IBM Back-End Development',
-            provider: 'IBM',
-            date: 'July 2024',
-            certificateUrl: 'https://orgfarm-b4985a3d23-dev-ed.develop.my.site.com/s/' // Replace with actual certificate URL
+            title: 'Google Cloud Professional Machine Learning Engineer',
+            provider: 'Google / Google Cloud',
+            date: 'September 2025',
+            certificateUrl: '#'
         },
-        {
-            id: 3,
-            title: 'TensorFlow Developer',
-            provider: 'DeepLearning.AI',
-            date: '2024',
-            certificateUrl: '#' // Replace with actual certificate URL
-        }
     ];
 
+    get skills() {
+        return this.skillsData.map(skill => ({
+            ...skill,
+            iconUrl: `${skillIcons}/DevIcons/${skill.iconFile}`
+        }));
+    }
+    
     skillsData = [
-        {
-            id: 1,
-            name: 'Python',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-        },
-        {
-            id: 2,
-            name: 'Java',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
-        },
-        {
-            id: 3,
-            name: 'JavaScript',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
-        },
-        {
-            id: 4,
-            name: 'Apex',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 5,
-            name: 'LWC',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 6,
-            name: 'Salesforce Admin',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 7,
-            name: 'Salesforce Development',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 8,
-            name: 'HTML',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
-        },
-        {
-            id: 9,
-            name: 'CSS',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
-        },
-        {
-            id: 10,
-            name: 'Agentforce',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 11,
-            name: 'Einstein AI',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg'
-        },
-        {
-            id: 12,
-            name: 'Google Cloud',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg'
-        },
-        {
-            id: 13,
-            name: 'Google AI',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
-        },
-        {
-            id: 14,
-            name: 'AI',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg'
-        },
-        {
-            id: 15,
-            name: 'ML',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-        },
-        {
-            id: 16,
-            name: 'Deep Learning',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg'
-        },
-        {
-            id: 17,
-            name: 'LLMs',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-        },
-        {
-            id: 18,
-            name: 'RAG',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-        }
+        { id: 1, name: 'Python', iconFile: 'python.svg' },
+        { id: 2, name: 'Java', iconFile: 'java.svg' },
+        { id: 3, name: 'JavaScript', iconFile: 'javascript.svg' },
+        { id: 4, name: 'Apex', iconFile: 'apex.svg' },
+        { id: 5, name: 'LWC', iconFile: 'lwc.png' },
+        { id: 6, name: 'Salesforce Admin', iconFile: 'sf-admin.jpg' },
+        { id: 7, name: 'Salesforce Development', iconFile: 'salesforce.svg' },
+        { id: 8, name: 'HTML', iconFile: 'html.svg' },
+        { id: 9, name: 'CSS', iconFile: 'css.svg' },
+        { id: 10, name: 'Agentforce', iconFile: 'agentforce.jpg' },
+        { id: 11, name: 'Einstein AI', iconFile: 'einsteinai.png' },
+        { id: 12, name: 'Google Cloud', iconFile: 'googlecloud.svg' },
+        { id: 13, name: 'Google AI', iconFile: 'googleai.jpg' },
+        { id: 14, name: 'AI', iconFile: 'ai.png' },
+        { id: 15, name: 'ML', iconFile: 'ml.png' },
+        { id: 16, name: 'Deep Learning', iconFile: 'dl.png' },
+        { id: 17, name: 'LLMs', iconFile: 'llm.png' },
+        { id: 18, name: 'RAG', iconFile: 'rag.png' }
     ];
+    
 
     // Handle skill card click (optional)
     handleSkillClick(event) {
@@ -176,13 +114,6 @@ export default class Hello extends LightningElement {
             title: 'AI-Powered Chatbot with RAG Implementation',
             description: 'Developed an intelligent chatbot using Large Language Models and Retrieval-Augmented Generation. Integrated vector databases for context-aware responses and implemented real-time learning capabilities.',
             techStack: ['LLMs', 'RAG', 'Vector DB', 'Python', 'FastAPI', 'Transformers', 'LangChain'],
-            projectUrl: '#' // Replace with actual project URL
-        },
-        {
-            id: 4,
-            title: 'Deep Learning Stock Price Prediction',
-            description: 'Built a sophisticated stock price prediction model using LSTM neural networks and technical indicators. Achieved 85% accuracy in short-term price movements with real-time data integration and visualization dashboard.',
-            techStack: ['Deep Learning', 'LSTM', 'TensorFlow', 'Python', 'Pandas', 'NumPy', 'Plotly'],
             projectUrl: '#' // Replace with actual project URL
         }
     ];
@@ -231,23 +162,23 @@ export default class Hello extends LightningElement {
             title: 'Salesforce Developer',
             company: 'UCI-India',
             dateRange: 'Jan 2025 – Present',
-            location: 'Vadodara, Gujarat',
+            location: 'Vadodara, Gujarat, India',
             achievements: [
-                'Created Mentor Mentee web platform using React.js and FastAPI, reducing server response time by 25%',
-                'Developed AI-based matching system using Python and scikit-learn, achieving 90% accuracy',
-                'Designed role-specific dashboards and managed data with PostgreSQL and MongoDB'
+                '',
+                '',
+                ''
             ]
         },
         {
             id: 2,
             title: 'Python Developer Intern',
             company: 'Webmyne Systems',
-            dateRange: 'June – July 2024',
-            location: 'Vadodara, Gujarat',
+            dateRange: 'Dec 2024 - Jan 2025',
+            location: 'Vadodara, Gujarat, India',
             achievements: [
-                'Developed SQL-based database solutions for Data Center Management Systems',
-                'Automated data collection and cleaning workflows using Python',
-                'Tuned queries to improve data retrieval speed by 30%'
+                '',
+                '',
+                ''
             ]
         }
     ];
@@ -260,10 +191,15 @@ export default class Hello extends LightningElement {
         if (targetId && targetId.startsWith('#')) {
             const targetElement = this.template.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start',
-                    inline: 'nearest'
+                // This is the fix: calculate the position manually
+                const header = this.template.querySelector('.header');
+                const headerHeight = header ? header.offsetHeight : 90; // Get header height, or fallback to 70px
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight;
+    
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         }
@@ -290,26 +226,27 @@ export default class Hello extends LightningElement {
         event.preventDefault();
         this.isDarkTheme = !this.isDarkTheme;
         
-        // Update CSS custom properties for theme
         const mainContainer = this.template.querySelector('.main-container');
         if (mainContainer) {
             if (this.isDarkTheme) {
+                // Dark Theme
                 mainContainer.style.setProperty('--bg-primary', '#0f172a');
                 mainContainer.style.setProperty('--bg-secondary', '#1e293b');
                 mainContainer.style.setProperty('--text-primary', '#f8fafc');
                 mainContainer.style.setProperty('--text-secondary', '#94a3b8');
+                mainContainer.style.setProperty('--border-color', '#475569');
+                // THIS IS THE FIX: Use the original semi-transparent color
+                mainContainer.style.setProperty('--bg-card', 'rgba(30, 41, 59, 0.5)'); 
             } else {
+                // Light Theme
                 mainContainer.style.setProperty('--bg-primary', '#ffffff');
-                mainContainer.style.setProperty('--bg-secondary', '#f8fafc');
+                mainContainer.style.setProperty('--bg-secondary', '#f1f5f9');
                 mainContainer.style.setProperty('--text-primary', '#0f172a');
                 mainContainer.style.setProperty('--text-secondary', '#475569');
+                mainContainer.style.setProperty('--border-color', '#e2e8f0');
+                // THIS IS THE FIX: Use a solid white color
+                mainContainer.style.setProperty('--bg-card', '#ffffff');
             }
-        }
-
-        // Update theme toggle icon
-        const themeIcon = this.template.querySelector('.theme-toggle__icon');
-        if (themeIcon) {
-            themeIcon.style.setProperty('content', this.isDarkTheme ? '"☀"' : '"🌙"');
         }
     }
 
